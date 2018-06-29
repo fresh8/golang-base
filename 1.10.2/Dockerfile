@@ -12,4 +12,5 @@ RUN cd /tmp \
   && rm $GLIDE_ARCHIVE
 
 # dep
-RUN go get -u github.com/golang/dep/cmd/dep
+RUN apk add --no-cache git openssl bzr \
+    && go get -u github.com/golang/dep/cmd/dep
