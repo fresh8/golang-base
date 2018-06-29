@@ -1,4 +1,4 @@
-FROM golang:1.8.7
+FROM golang:1.7.6
 
 # glide
 ENV GLIDE_ARCH linux-amd64
