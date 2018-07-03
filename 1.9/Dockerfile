@@ -1,4 +1,4 @@
-FROM golang:1.9
+FROM golang:1.9.7
 
 # glide
 ENV GLIDE_ARCH linux-amd64
@@ -10,3 +10,6 @@ RUN cd /tmp \
   && tar xf $GLIDE_ARCHIVE \
   && mv $GLIDE_ARCH/glide /usr/local/bin \
   && rm $GLIDE_ARCHIVE
+
+# dep
+RUN go get -u github.com/golang/dep/cmd/dep
