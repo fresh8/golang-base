@@ -11,5 +11,3 @@ RUN cd /tmp \
   && mv $GLIDE_ARCH/glide /usr/local/bin \
   && rm $GLIDE_ARCHIVE
 
-# dep
-RUN go get -u github.com/golang/dep/cmd/dep
