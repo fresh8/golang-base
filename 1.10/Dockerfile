@@ -3,6 +3,7 @@ FROM golang:1.10.3
 # install xz
 RUN apt-get update && apt-get install -y \
   xz-utils \
+  ca-certificates \
   && rm -rf /var/lib/apt/lists/*
 
 # install UPX
@@ -10,9 +11,6 @@ ADD https://github.com/upx/upx/releases/download/v3.94/upx-3.94-amd64_linux.tar.
 RUN xz -d -c /usr/local/upx-3.94-amd64_linux.tar.xz | \
   tar -xOf - upx-3.94-amd64_linux/upx > /bin/upx && \
   chmod a+x /bin/upx
-
-# Install SSL ca certificates
-RUN apk update && apk add git && apk add ca-certificates
 
 # glide
 ENV GLIDE_ARCH linux-amd64
@@ -24,10 +22,6 @@ RUN cd /tmp \
   && tar xf $GLIDE_ARCHIVE \
   && mv $GLIDE_ARCH/glide /usr/local/bin \
   && rm $GLIDE_ARCHIVE
-
-
-# Create binary directory
-RUN ["mkdir", "-p", "$GOPATH/bin"]
 
 # Install Dep
 RUN go get -u github.com/golang/dep/cmd/dep
