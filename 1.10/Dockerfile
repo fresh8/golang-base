@@ -1,10 +1,7 @@
 FROM golang:1.10.3-alpine3.8
 
 # install xz tzdata zip ca-certificates wget
-RUN apk --no-cache add tzdata zip ca-certificates upx git dep glide
-
-# Install fresh
-RUN go get github.com/pilu/fresh
+RUN apk --no-cache add tzdata zip upx dep
 
 # Create zoneinfo
 WORKDIR /usr/share/zoneinfo
