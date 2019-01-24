@@ -1,4 +1,4 @@
-FROM golang:1.11.4
+FROM golang:1.11.5
 
 # install xz
 RUN apt-get update && apt-get install -y \
